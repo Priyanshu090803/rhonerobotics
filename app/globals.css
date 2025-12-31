@@ -46,21 +46,35 @@
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
   --animate-pulse: pulse var(--duration) ease-out infinite;
+
   @keyframes pulse {
-  0%, 100% {
-    boxShadow: 0 0 0 0 var(--pulse-color);
+
+    0%,
+    100% {
+      boxShadow: 0 0 0 0 var(--pulse-color);
     }
-  50% {
-    boxShadow: 0 0 0 8px var(--pulse-color);
+
+    50% {
+      boxShadow: 0 0 0 8px var(--pulse-color);
     }
   }
-  --animate-shiny-text: shiny-text 8s infinite
-;
+
+  --animate-shiny-text: shiny-text 8s infinite;
+
   @keyframes shiny-text {
-  0%, 90%, 100% {
-    background-position: calc(-100% - var(--shiny-width)) 0;}
-  30%, 60% {
-    background-position: calc(100% + var(--shiny-width)) 0;}}}
+
+    0%,
+    90%,
+    100% {
+      background-position: calc(-100% - var(--shiny-width)) 0;
+    }
+
+    30%,
+    60% {
+      background-position: calc(100% + var(--shiny-width)) 0;
+    }
+  }
+}
 
 :root {
   --radius: 0.625rem;
@@ -135,23 +149,55 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
+
 @theme inline {
-  --animate-cell-ripple: cell-ripple var(--duration, 200ms) ease-out none 1
-  var(--delay, 0ms);
+  --animate-cell-ripple: cell-ripple var(--duration, 200ms) ease-out none 1 var(--delay, 0ms);
 
   @keyframes cell-ripple {
     0% {
       opacity: 0.4;
     }
+
     50% {
       opacity: 0.8;
     }
+
     100% {
       opacity: 0.4;
     }
   }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }

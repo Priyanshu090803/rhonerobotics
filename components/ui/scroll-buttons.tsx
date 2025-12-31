@@ -7,7 +7,7 @@ interface ScrollButtonsProps {
     onNext: () => void;
     prevDisabled?: boolean;
     nextDisabled?: boolean;
-    className?: boolean;
+    className?: string;
 }
 
 export function ScrollButtons({

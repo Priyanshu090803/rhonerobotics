@@ -4,6 +4,7 @@ import { Services } from '@/components/Services'
 import { OurProcesses } from '@/components/OurProcesses'
 import { Team } from '@/components/Team'
 import CaseStudies from '@/components/CaseStudies'
+import Contact from '@/components/Contact'
 const Home = () => {
   return (
     <div className='min-h-screen w-full  '>
@@ -13,6 +14,7 @@ const Home = () => {
       <OurProcesses />
       <Team />
       <CaseStudies />
+      <Contact/>
     </div>
   )
 }

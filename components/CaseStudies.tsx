@@ -1,12 +1,11 @@
 "use client";
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { SectionHeader } from './ui/section-header';
 import { ScrollButtons } from './ui/scroll-buttons';
 import { CaseStudyCard, CaseStudy } from './CaseStudyCard';
 
 const caseStudies: CaseStudy[] = [
     {
-        title: "Intastyles",
+        title: "Instastyles",
         category: "Apparel Tech",
         tagline: "Photoshop-Led Cloth Revolution",
         description: "A revolutionary cloth dripping system integrated with Photoshop, enabling high-fidelity visualization for the modern clothing industry.",
@@ -45,75 +44,86 @@ const caseStudies: CaseStudy[] = [
 
 export default function CaseStudies() {
     const [activeIndex, setActiveIndex] = useState(0);
+    const [canScrollLeft, setCanScrollLeft] = useState(false);
+    const [canScrollRight, setCanScrollRight] = useState(true);
     const scrollRef = useRef<HTMLDivElement>(null);
 
-    const handleScroll = useCallback(() => {
+    const checkScroll = useCallback(() => {
         if (!scrollRef.current) return;
-
         const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-        const maxScroll = scrollWidth - clientWidth;
 
-        if (maxScroll <= 0) return;
+        // Use a small buffer to handle rounding errors
+        setCanScrollLeft(scrollLeft > 10);
+        setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
 
-        const scrollFraction = scrollLeft / maxScroll;
-        const newIndex = Math.round(scrollFraction * (caseStudies.length - 1));
-
-        if (newIndex !== activeIndex) {
-            setActiveIndex(newIndex);
+        const firstChild = scrollRef.current.children[0] as HTMLElement;
+        if (firstChild) {
+            const cardWidth = firstChild.offsetWidth;
+            const gap = 32; // gap-8
+            const index = Math.round(scrollLeft / (cardWidth + gap));
+            setActiveIndex(index);
         }
-    }, [activeIndex]);
+    }, [setActiveIndex]);
 
     useEffect(() => {
         const scrollContainer = scrollRef.current;
         if (scrollContainer) {
-            scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
-            window.addEventListener('resize', handleScroll);
+            scrollContainer.addEventListener('scroll', checkScroll, { passive: true });
+            window.addEventListener('resize', checkScroll);
+            const timer = setTimeout(checkScroll, 100);
+            return () => {
+                scrollContainer.removeEventListener('scroll', checkScroll);
+                window.removeEventListener('resize', checkScroll);
+                clearTimeout(timer);
+            };
         }
-        return () => {
-            if (scrollContainer) {
-                scrollContainer.removeEventListener('scroll', handleScroll);
-                window.removeEventListener('resize', handleScroll);
-            }
-        };
-    }, [handleScroll]);
+    }, [checkScroll]);
 
-    const scrollToIndex = (index: number) => {
+    const scroll = (direction: 'left' | 'right') => {
         if (!scrollRef.current) return;
 
-        const { scrollWidth, clientWidth } = scrollRef.current;
-        const maxScroll = scrollWidth - clientWidth;
+        const firstChild = scrollRef.current.children[0] as HTMLElement;
+        if (!firstChild) return;
 
-        const safeIndex = Math.max(0, Math.min(index, caseStudies.length - 1));
-        const targetScroll = (safeIndex / (caseStudies.length - 1)) * maxScroll;
+        const cardWidth = firstChild.offsetWidth;
+        const gap = 32;
+        const scrollAmount = direction === 'left' ? -(cardWidth + gap) : (cardWidth + gap);
 
-        scrollRef.current.scrollTo({
-            left: targetScroll,
+        scrollRef.current.scrollBy({
+            left: scrollAmount,
             behavior: 'smooth'
         });
     };
 
-    const scrollNext = () => scrollToIndex(activeIndex + 1);
-    const scrollPrev = () => scrollToIndex(activeIndex - 1);
+    const scrollNext = () => scroll('right');
+    const scrollPrev = () => scroll('left');
 
     return (
-        <section className="py-24 px-6 md:px-12 lg:px-20 bg-white" id="case-studies">
+        <section className="py-24 px-6 md:px-12 lg:px-20 bg-[#0a0a0a]" id="case-studies">
             <div className="max-w-7xl mx-auto">
-                <SectionHeader
-                    title="Case Studies"
-                    description="A selection of projects where we automated workflows and delivered measurable results."
-                >
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20 gap-8">
+                    <div className="max-w-3xl">
+                        <h2 className="text-4xl md:text-6xl lg:text-8xl font-bold tracking-tight mb-6 md:mb-8 font-jakarta text-white">
+                            Case Studies
+                        </h2>
+                        <p className="text-lg md:text-2xl text-neutral-400 font-jakarta leading-relaxed max-w-2xl">
+                            A selection of projects where we automated workflows and delivered measurable results.
+                        </p>
+                    </div>
+
                     <ScrollButtons
                         onPrev={scrollPrev}
                         onNext={scrollNext}
-                        prevDisabled={activeIndex === 0}
-                        nextDisabled={activeIndex === caseStudies.length - 1}
+                        prevDisabled={!canScrollLeft}
+                        nextDisabled={!canScrollRight}
+                        className="text-white border-neutral-800 hover:border-orange-600 hover:text-orange-600"
                     />
-                </SectionHeader>
+                </div>
 
                 <div className="relative group/container">
                     <div
                         ref={scrollRef}
-                        className="flex overflow-x-hidden pb-12 gap-8 no-scrollbar snap-x snap-mandatory cursor-grab active:cursor-grabbing"
+                        className="flex overflow-x-auto pb-12 gap-8 no-scrollbar snap-x snap-mandatory cursor-grab active:cursor-grabbing"
                     >
                         {caseStudies.map((study, index) => (
                             <CaseStudyCard key={index} study={study} index={index} />

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono,Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import {Navbar} from "@/components/Navbar";
+import {ReactLenis} from "@/utils/lenis";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,12 +31,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <ReactLenis root>
       <body
         className={`${geistSans.variable} ${plusjakartasans.variable} ${geistMono.variable} antialiased  w-full min-h-screen`}
       >
       <Navbar />
         {children}
       </body>
+      </ReactLenis>
     </html>
   );
 }
