@@ -1,50 +1,3 @@
-// "use client";
-
-// import Link from "next/link";
-
-// const Navbar = () => {
-//   const navLinks = [
-//     { name: "Services", href: "#services" },
-//     { name: "Process", href: "#process" },
-//     { name: "Pricing", href: "#pricing" },
-//     { name: "FAQ", href: "#faq" },
-//     { name: "Contact", href: "#contact" },
-//   ];
-
-//   return (
-//     <nav className="fixed top-3 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-4xl px-4">
-
-//       <div className="flex items-center justify-between rounded-2xl border bg-white/70   backdrop-blur-sm backdrop-saturate-150 shadow-lg px-4 py-2">
-
-//         <Link href="/" className="text-xl font-bold dark:text-white hover:opacity-80 transition-opacity capitalize border px-2 py-1 rounded-lg -rotate-12 text-black bg-neutral-100/20">
-//           R-R
-//         </Link>
-
-//         <div className="hidden md:flex items-center space-x-8">
-//           {navLinks.map((link) => (
-//             <Link
-//               key={link.name}
-//               href={link.href}
-//               className="text-sm font-medium text-black/80 dark:text-white/80 hover:text-black dark:hover:text-white transition-colors border border-transparent px-4 py-2 rounded-2xl hover:bg-black/5 dark:hover:bg-white/5"
-//             >
-//               {link.name}
-//             </Link>
-//           ))}
-//         </div>
-
-//         <Link
-//           href="#get-template"
-//           className="px-4 py-2 rounded-xl bg-neutral-900 dark:bg-white text-white dark:text-black font-medium text-sm hover:opacity-90 transition-opacity项目-nowrap"
-//         >
-//           Contact Us
-//         </Link>
-//       </div>
-//     </nav>
-//   );
-// };
-
-// export default Navbar;
-
 "use client";
 import {
   Nav,
@@ -62,12 +15,20 @@ import { useState } from "react";
 export function Navbar() {
   const navItems = [
     {
-      name: "Features",
-      link: "#features",
+      name: "Services",
+      link: "#services",
     },
     {
-      name: "Pricing",
-      link: "#pricing",
+      name: "Process",
+      link: "#process",
+    },
+    {
+      name: "Team",
+      link: "#team",
+    },
+    {
+      name: "Case Studies",
+      link: "#case-studies",
     },
     {
       name: "Contact",

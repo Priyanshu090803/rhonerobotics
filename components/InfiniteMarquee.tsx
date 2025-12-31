@@ -25,7 +25,7 @@ const ITEMS = [
 
 interface InfiniteMarqueeProps {
   className?: string;
-  speed?: number; // Duration in seconds
+  speed?: number;
 }
 
 export const InfiniteMarquee: React.FC<InfiniteMarqueeProps> = ({ 
@@ -47,7 +47,6 @@ export const InfiniteMarquee: React.FC<InfiniteMarqueeProps> = ({
             }}
             style={{ willChange: "transform" }}
           >
-            {/* First copy of items */}
             {ITEMS.map((item, idx) => (
               <div key={`first-${idx}`} className="flex items-center gap-3 text-gray-400 hover:text-gray-900 transition-colors duration-300">
                 <item.icon className="w-6 h-6" />
@@ -55,7 +54,6 @@ export const InfiniteMarquee: React.FC<InfiniteMarqueeProps> = ({
               </div>
             ))}
             
-            {/* Second copy of items for seamless loop */}
             {ITEMS.map((item, idx) => (
               <div key={`second-${idx}`} className="flex items-center gap-3 text-gray-400 hover:text-gray-900 transition-colors duration-300">
                 <item.icon className="w-6 h-6" />

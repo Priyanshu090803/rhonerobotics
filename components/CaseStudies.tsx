@@ -1,9 +1,10 @@
 "use client";
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { useState, useRef, useEffect, useCallback } from 'react';
+import { SectionHeader } from './ui/section-header';
+import { ScrollButtons } from './ui/scroll-buttons';
+import { CaseStudyCard, CaseStudy } from './CaseStudyCard';
 
-const caseStudies = [
+const caseStudies: CaseStudy[] = [
     {
         title: "Intastyles",
         category: "Apparel Tech",
@@ -42,111 +43,84 @@ const caseStudies = [
     }
 ];
 
-const CaseStudies = () => {
+export default function CaseStudies() {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const scrollRef = useRef<HTMLDivElement>(null);
+
+    const handleScroll = useCallback(() => {
+        if (!scrollRef.current) return;
+
+        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+        const maxScroll = scrollWidth - clientWidth;
+
+        if (maxScroll <= 0) return;
+
+        const scrollFraction = scrollLeft / maxScroll;
+        const newIndex = Math.round(scrollFraction * (caseStudies.length - 1));
+
+        if (newIndex !== activeIndex) {
+            setActiveIndex(newIndex);
+        }
+    }, [activeIndex]);
+
+    useEffect(() => {
+        const scrollContainer = scrollRef.current;
+        if (scrollContainer) {
+            scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
+            window.addEventListener('resize', handleScroll);
+        }
+        return () => {
+            if (scrollContainer) {
+                scrollContainer.removeEventListener('scroll', handleScroll);
+                window.removeEventListener('resize', handleScroll);
+            }
+        };
+    }, [handleScroll]);
+
+    const scrollToIndex = (index: number) => {
+        if (!scrollRef.current) return;
+
+        const { scrollWidth, clientWidth } = scrollRef.current;
+        const maxScroll = scrollWidth - clientWidth;
+
+        const safeIndex = Math.max(0, Math.min(index, caseStudies.length - 1));
+        const targetScroll = (safeIndex / (caseStudies.length - 1)) * maxScroll;
+
+        scrollRef.current.scrollTo({
+            left: targetScroll,
+            behavior: 'smooth'
+        });
+    };
+
+    const scrollNext = () => scrollToIndex(activeIndex + 1);
+    const scrollPrev = () => scrollToIndex(activeIndex - 1);
+
     return (
         <section className="py-24 px-6 md:px-12 lg:px-20 bg-white" id="case-studies">
             <div className="max-w-7xl mx-auto">
-                {/* Header Section */}
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
-                    <div className="max-w-3xl">
-                        <h2 className="text-5xl md:text-8xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#7357bf] to-[#ab96e4] mb-8 font-jakarta drop-shadow-sm">
-                            Case Studies
-                        </h2>
-                        <p className="text-lg md:text-2xl text-neutral-500 font-jakarta leading-relaxed max-w-2xl">
-                            A selection of projects where we automated workflows and delivered measurable results.
-                        </p>
-                    </div>
-                </div>
+                <SectionHeader
+                    title="Case Studies"
+                    description="A selection of projects where we automated workflows and delivered measurable results."
+                >
+                    <ScrollButtons
+                        onPrev={scrollPrev}
+                        onNext={scrollNext}
+                        prevDisabled={activeIndex === 0}
+                        nextDisabled={activeIndex === caseStudies.length - 1}
+                    />
+                </SectionHeader>
 
-                {/* Horizontal Scroll Area */}
                 <div className="relative group/container">
-                    <div className="flex overflow-x-auto pb-12 gap-8 no-scrollbar snap-x snap-mandatory cursor-grab active:cursor-grabbing">
+                    <div
+                        ref={scrollRef}
+                        className="flex overflow-x-hidden pb-12 gap-8 no-scrollbar snap-x snap-mandatory cursor-grab active:cursor-grabbing"
+                    >
                         {caseStudies.map((study, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                                className="min-w-[90vw] md:min-w-[calc(50%-16px)] lg:min-w-[calc(33.333%-22px)] snap-start group"
-                            >
-                                <div className="bg-neutral-50 rounded-3xl overflow-hidden border border-neutral-100 flex flex-col h-full hover:border-[#7357bf]/20 transition-all duration-500 hover:shadow-2xl hover:shadow-[#7357bf]/5">
-                                    {/* Image Container */}
-                                    <div className="relative h-72 overflow-hidden">
-                                        <img
-                                            src={study.image}
-                                            alt={study.title}
-                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/40 to-transparent" />
-                                        <div className="absolute top-6 right-6 p-2 bg-white/20 backdrop-blur-md rounded-full text-white border border-white/30 transform transition-transform duration-500 group-hover:rotate-45">
-                                            <ArrowUpRight className="w-5 h-5" />
-                                        </div>
-                                    </div>
-
-                                    {/* Content Area */}
-                                    <div className="p-8 flex flex-col flex-grow">
-                                        <div className="flex justify-between items-start mb-6">
-                                            <div>
-                                                <h3 className="text-2xl font-bold text-neutral-900 mb-1 font-jakarta">
-                                                    {study.title}
-                                                </h3>
-                                                <p className="text-sm font-semibold text-[#7357bf] font-jakarta">
-                                                    {study.category}
-                                                </p>
-                                            </div>
-                                            <div className="flex gap-1">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-neutral-200" />
-                                                <span className="w-1.5 h-1.5 rounded-full bg-neutral-200" />
-                                                <span className="w-1.5 h-1.5 rounded-full bg-neutral-200" />
-                                            </div>
-                                        </div>
-
-                                        <div className="space-y-4 mb-8">
-                                            <div className="flex items-center gap-3">
-                                                <span className="w-2 h-2 rounded-full bg-[#7357bf]" />
-                                                <p className="text-sm font-bold text-neutral-800 font-jakarta">
-                                                    {study.tagline}
-                                                </p>
-                                            </div>
-                                            <p className="text-neutral-500 text-sm leading-relaxed line-clamp-3 font-jakarta">
-                                                {study.description}
-                                            </p>
-                                        </div>
-
-                                        <div className="mt-auto">
-                                            <div className="flex flex-wrap gap-2 pt-6 border-t border-neutral-100">
-                                                {study.tags.map(tag => (
-                                                    <span key={tag} className="text-[10px] uppercase tracking-tighter font-bold text-neutral-400 bg-neutral-100 px-2.5 py-1 rounded-md">
-                                                        {tag}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </motion.div>
+                            <CaseStudyCard key={index} study={study} index={index} />
                         ))}
-                    </div>
-
-                    {/* Scroll Indicators Area */}
-                    <div className="flex items-center gap-3 mt-4">
-                        <div className="h-1 flex-grow bg-neutral-100 rounded-full overflow-hidden">
-                            <motion.div
-                                className="h-full bg-[#7357bf]"
-                                initial={{ width: "20%" }}
-                                whileInView={{ width: "100%" }}
-                                transition={{ duration: 1.5, ease: "easeInOut" }}
-                            />
-                        </div>
-                        <p className="text-xs font-bold text-neutral-400 font-jakarta uppercase tracking-widest">
-                            Scroll to explore
-                        </p>
                     </div>
                 </div>
             </div>
         </section>
     );
-};
-
-export default CaseStudies;
+}

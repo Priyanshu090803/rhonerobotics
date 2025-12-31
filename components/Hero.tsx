@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { DotIcon, StarsIcon } from "lucide-react";
+import {   StarsIcon } from "lucide-react";
 import { PulsatingButton } from "./ui/pulsating-button";
 import { BackgroundRippleEffect } from "./ui/background-ripple-effect";
 import { LayoutTextFlip } from "./ui/layout-text-flip";
@@ -40,10 +40,9 @@ const Hero = () => {
             </PulsatingButton>
           </div>
 
-          {/* Feature grid with Lucide icons */}
           <div className="w-full grid grid-cols-1 md:grid-cols-3 border-t border-gray-100">
             {[
-              { 
+              {   
                 icon: "zap", 
                 title: "Light speed booking", 
                 desc: "Instant ticket processing" 
@@ -79,7 +78,6 @@ const Hero = () => {
   );
 };
 
-// Helper component to dynamically render Lucide icons
 const DynamicIcon = ({ name, className }: { name: string; className?: string }) => {
   const IconComponent = React.useMemo(() => {
     return require(`lucide-react`)[name.charAt(0).toUpperCase() + name.slice(1) + "Icon"];

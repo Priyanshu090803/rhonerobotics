@@ -3,6 +3,7 @@ import { InfiniteMarquee } from '@/components/InfiniteMarquee'
 import { Services } from '@/components/Services'
 import { OurProcesses } from '@/components/OurProcesses'
 import { Team } from '@/components/Team'
+import CaseStudies from '@/components/CaseStudies'
 const Home = () => {
   return (
     <div className='min-h-screen w-full  '>
@@ -11,6 +12,7 @@ const Home = () => {
       <Services />
       <OurProcesses />
       <Team />
+      <CaseStudies />
     </div>
   )
 }
