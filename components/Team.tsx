@@ -39,10 +39,10 @@ export function Team() {
         },
     ];
     return (
-        <div className="py-20 px-20   rounded-2xl
-         bg-gradient-to-t from-[#e2dcf1] via-[#7357bf] via-70% to-[#6d4cbc]
-        ">
-            <h2 className="text-transparent text-7xl font-bold bg-clip-text bg-gradient-to-t from-[#ab96e4] via-[#fefeff] via-70% to-[#e3d9fd] drop-shadow-[0_4px_12px_rgba(0,0,0,0.15)]  w-fit ">Our Team</h2>
+        <div className="py-20 px-36   
+         bg-linear-to-br from-[#e9e9e9] via-[#ffffff] via-50% to-[#ffffff] 
+        " id="team">
+            <h2 className="text-transparent text-8xl font-bold bg-clip-text bg-gradient-to-t from-[#191919] via-[#383737] via-70% to-[#191919] py-10 drop-shadow-[0_4px_12px_rgba(0,0,0,0.15)]  w-fit ">Our Team</h2>
             <AnimatedTestimonials testimonials={testimonials} />
         </div>
     );

@@ -29,11 +29,7 @@ export function Navbar() {
     {
       name: "Case Studies",
       link: "#case-studies",
-    },
-    {
-      name: "Contact",
-      link: "#contact",
-    },
+    }
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -46,13 +42,14 @@ export function Navbar() {
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
-            <NavbarButton variant="primary">Get Started</NavbarButton>
+            <NavbarButton variant="primary" href="#contact">Contact Us</NavbarButton>
           </div>
         </NavBody>
 
         {/* Mobile Navigation */}
-        <MobileNav>
-          <MobileNavHeader>
+        <MobileNav className="   ">
+          
+          <MobileNavHeader> 
             <NavbarLogo />
             <MobileNavToggle
               isOpen={isMobileMenuOpen}
@@ -79,16 +76,15 @@ export function Navbar() {
               <NavbarButton
                 onClick={() => setIsMobileMenuOpen(false)}
                 variant="primary"
-                className="w-full"
+                className="w-full "
               >
-                Get Started
+                Contact Us
               </NavbarButton>
             </div>
           </MobileNavMenu>
         </MobileNav>
       </Nav>
 
-      {/* Navbar */}
     </div>
   );
 }

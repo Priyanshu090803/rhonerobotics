@@ -7,7 +7,7 @@ import CaseStudies from '@/components/CaseStudies'
 import Contact from '@/components/Contact'
 const Home = () => {
   return (
-    <div className='min-h-screen w-full  '>
+    <div className='min-h-screen w-full  overflow-x-hidden '>
       <Hero />
       <InfiniteMarquee />
       <Services />

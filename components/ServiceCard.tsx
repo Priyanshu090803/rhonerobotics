@@ -1,4 +1,4 @@
-  "use client";
+"use client";
 import React from 'react';
 import { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -13,6 +13,15 @@ interface ServiceCardProps {
   className?: string;
 }
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 0 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+} as const;
+
 export const ServiceCard: React.FC<ServiceCardProps> = ({
   title,
   description,
@@ -22,12 +31,9 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 5 }}  
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }} 
-      transition={{ duration: 0.7, ease: "easeOut" }}  
+      variants={cardVariants}
       className={cn(
-        "group relative overflow-hidden bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300",
+        "group relative overflow-hidden bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-gray-100 hover:shadow-md ",
         imageSrc ? "flex flex-col lg:flex-row gap-6 md:gap-8 items-center" : "flex flex-col items-start justify-between min-h-[280px]",
         className
       )}

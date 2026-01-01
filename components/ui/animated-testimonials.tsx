@@ -47,7 +47,7 @@ export const AnimatedTestimonials = ({
   }, [autoplay]);
 
   return (
-    <div className="mx-auto max-w-sm px-4 py-20 font-sans antialiased md:max-w-4xl md:px-8 lg:px-12">
+    <div className="  max-w-sm px-4 py-20 font-sans antialiased md:max-w-7xl md:px-8 lg:px-12  ">
       <div className="relative grid grid-cols-1 gap-20 md:grid-cols-2">
         <div>
           <div className="relative h-80 w-full">
@@ -116,13 +116,13 @@ export const AnimatedTestimonials = ({
               ease: "easeInOut",
             }}
           >
-            <h3 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-t from-[#514e57] via-[#353342] via-70% to-[#312c39] dark:text-white">
+            <h3 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-t from-[#0e0e0e] via-[#181818] via-70% to-[#3b3b3b] dark:text-white">
               {testimonials[active].name}
             </h3>
-            <h4 className="text-sm font-jakarta text-neutral-300 dark:text-neutral-500">
+            <span className="text-sm font-jakarta text-neutral-500 dark:text-neutral-500">
               {testimonials[active].designation}
-            </h4>
-            <motion.p className="mt-8 text-lg font-jakarta leading-6 text-neutral-300 dark:text-neutral-300">
+            </span>
+            <motion.p className="mt-8 text-lg font-jakarta leading-6 text-neutral-400 dark:text-neutral-300">
               {testimonials[active].quote.split(" ").map((word, index) => (
                 <motion.span
                   key={index}

@@ -99,7 +99,7 @@ export default function CaseStudies() {
     const scrollPrev = () => scroll('left');
 
     return (
-        <section className="py-24 px-6 md:px-12 lg:px-20 bg-[#0a0a0a]" id="case-studies">
+        <section className="py-24 px-6 md:px-12 lg:px-20 bg-[#0a0a0a] rounded-2xl" id="case-studies">
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20 gap-8">
                     <div className="max-w-3xl">
@@ -116,7 +116,7 @@ export default function CaseStudies() {
                         onNext={scrollNext}
                         prevDisabled={!canScrollLeft}
                         nextDisabled={!canScrollRight}
-                        className="text-white border-neutral-800 hover:border-orange-600 hover:text-orange-600"
+                        className="text-white border-neutral-800 hover:border-rose-600 hover:text-rose-600"
                     />
                 </div>
 

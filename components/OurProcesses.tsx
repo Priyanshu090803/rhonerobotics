@@ -28,7 +28,7 @@ const content = [
 
 export function OurProcesses() {
     return (
-        <div className="w-full bg-white">
+        <div className="w-full bg-white" id="process">
             <StickyScroll content={content} />
         </div>
     );

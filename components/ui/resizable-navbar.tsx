@@ -73,9 +73,9 @@ export const Nav = ({ children, className }: NavbarProps) => {
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
           ? React.cloneElement(
-              child as React.ReactElement<{ visible?: boolean }>,
-              { visible },
-            )
+            child as React.ReactElement<{ visible?: boolean }>,
+            { visible },
+          )
           : child,
       )}
     </motion.div>
@@ -134,7 +134,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
           {hovered === idx && (
             <motion.div
               layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-violet-100 dark:bg-neutral-800"
+              className="absolute inset-0 h-full w-full rounded-full bg-neutral-100 dark:bg-neutral-800"
             />
           )}
           <span className="relative z-20">{item.name}</span>
@@ -164,7 +164,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
         damping: 50,
       }}
       className={cn(
-        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent px-0 py-2 lg:hidden",
+        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent px-0 py-2 lg:hidden rounded-2xl",
         visible && "bg-white/80 dark:bg-neutral-950/80",
         className,
       )}
@@ -235,7 +235,7 @@ export const NavbarLogo = () => {
       href="#"
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
-     
+
       <span className="font-medium text-black dark:text-white border -rotate-12 px-2 py-1 rounded-lg font-bold text-lg ">R-R</span>
     </a>
   );
@@ -255,9 +255,9 @@ export const NavbarButton = ({
   className?: string;
   variant?: "primary" | "secondary" | "dark" | "gradient";
 } & (
-  | React.ComponentPropsWithoutRef<"a">
-  | React.ComponentPropsWithoutRef<"button">
-)) => {
+    | React.ComponentPropsWithoutRef<"a">
+    | React.ComponentPropsWithoutRef<"button">
+  )) => {
   const baseStyles =
     "px-4 py-2 rounded-md bg-white button bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
 

@@ -54,7 +54,7 @@ export function CaseStudyCard({ study, index }: CaseStudyCardProps) {
                         >
                             <div className="space-y-4">
                                 <div className="flex items-center gap-2">
-                                    <div className="w-2 h-2 rounded-full bg-orange-600" />
+                                    <div className="w-2 h-2 rounded-full bg-rose-600" />
                                     <h4 className="text-lg font-bold text-white font-jakarta">
                                         {study.tagline}
                                     </h4>
@@ -80,7 +80,7 @@ export function CaseStudyCard({ study, index }: CaseStudyCardProps) {
                         <h3 className="text-xl font-bold text-white mb-0.5 font-jakarta">
                             {study.title}
                         </h3>
-                        <p className="text-xs font-medium text-orange-600 uppercase tracking-wider font-jakarta">
+                        <p className="text-xs font-bold text-rose-700  uppercase tracking-wider font-jakarta mt-2">
                             {study.category}
                         </p>
                     </div>
@@ -93,7 +93,7 @@ export function CaseStudyCard({ study, index }: CaseStudyCardProps) {
                             {[...Array(4)].map((_, i) => (
                                 <div
                                     key={i}
-                                    className={`w-1 h-1 rounded-full transition-colors ${showDescription ? 'bg-orange-600' : 'bg-neutral-500 group-hover/btn:bg-white'}`}
+                                    className={`w-1 h-1 rounded-full transition-colors ${showDescription ? 'bg-rose-300' : 'bg-neutral-500 group-hover/btn:bg-white'}`}
                                 />
                             ))}
                         </div>

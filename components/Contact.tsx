@@ -65,7 +65,7 @@ const Contact = () => {
                             variants={fadeInUp}
                             className="bg-white p-10 rounded-[2.5rem] border border-neutral-100 shadow-sm transition-all hover:shadow-xl hover:shadow-neutral-200/50 group h-[300px] flex flex-col justify-between"
                         >
-                            <div className="w-14 h-14 bg-neutral-50 rounded-2xl flex items-center justify-center text-neutral-900 transition-colors group-hover:bg-purple-50 group-hover:text-purple-600">
+                            <div className="w-14 h-14 bg-neutral-50 rounded-2xl flex items-center justify-center text-neutral-900 transition-colors group-hover:bg-rose-50 group-hover:text-rose-700">
                                 <MapPin className="w-6 h-6" />
                             </div>
                             <div>
@@ -79,7 +79,7 @@ const Contact = () => {
                                 variants={fadeInUp}
                                 className="bg-white p-10 rounded-[2.5rem] border border-neutral-100 shadow-sm transition-all hover:shadow-xl hover:shadow-neutral-200/50 group h-[260px] flex flex-col justify-between"
                             >
-                                <div className="w-14 h-14 bg-neutral-50 rounded-2xl flex items-center justify-center text-neutral-900 transition-colors group-hover:bg-purple-50 group-hover:text-purple-600">
+                                <div className="w-14 h-14 bg-neutral-50 rounded-2xl flex items-center justify-center text-neutral-900 transition-colors group-hover:bg-rose-50 group-hover:text-rose-700">
                                     <Send className="w-6 h-6" />
                                 </div>
                                 <div>
@@ -92,7 +92,7 @@ const Contact = () => {
                                 variants={fadeInUp}
                                 className="bg-white p-10 rounded-[2.5rem] border border-neutral-100 shadow-sm transition-all hover:shadow-xl hover:shadow-neutral-200/50 group h-[260px] flex flex-col justify-between"
                             >
-                                <div className="w-14 h-14 bg-neutral-50 rounded-2xl flex items-center justify-center text-neutral-900 transition-colors group-hover:bg-purple-50 group-hover:text-purple-600">
+                                <div className="w-14 h-14 bg-neutral-50 rounded-2xl flex items-center justify-center text-neutral-900 transition-colors group-hover:bg-red-50 group-hover:text-rose-700">
                                     <Phone className="w-6 h-6" />
                                 </div>
                                 <div>
@@ -121,7 +121,7 @@ const Contact = () => {
                                         <input
                                             type={field.type}
                                             placeholder={field.placeholder}
-                                            className="w-full bg-neutral-50 border border-neutral-100 rounded-2xl px-6 py-4 text-neutral-900 placeholder:text-neutral-300 focus:outline-none focus:ring-2 focus:ring-purple-600/20 focus:border-purple-600/50 transition-all font-jakarta"
+                                            className="w-full bg-neutral-50 border border-neutral-100 rounded-2xl px-6 py-4 text-neutral-900 placeholder:text-neutral-300 focus:outline-none focus:ring-2 focus:ring-rose-600/20 focus:border-rose-600/50 transition-all font-jakarta"
                                         />
                                     </div>
                                 ))}
@@ -130,7 +130,7 @@ const Contact = () => {
                                     <textarea
                                         rows={5}
                                         placeholder="More about your project"
-                                        className="w-full bg-neutral-50 border border-neutral-100 rounded-2xl px-6 py-4 text-neutral-900 placeholder:text-neutral-300 focus:outline-none focus:ring-2 focus:ring-purple-600/20 focus:border-purple-600/50 transition-all font-jakarta resize-none"
+                                        className="w-full bg-neutral-50 border border-neutral-100 rounded-2xl px-6 py-4 text-neutral-900 placeholder:text-neutral-300 focus:outline-none focus:ring-2 focus:ring-rose-600/20 focus:border-rose-600/50 transition-all font-jakarta resize-none"
                                     />
                                 </div>
                             </div>
@@ -138,7 +138,7 @@ const Contact = () => {
                             <motion.button
                                 whileHover={{ scale: 1.01 }}
                                 whileTap={{ scale: 0.98 }}
-                                className="w-full bg-gradient-to-t border border-neutral-600 from-[#626161] via-[#030303] to-[#1a1919] shadow-lg shadow-violet-200 hover:bg-neutral-800 text-white rounded-2xl px-8 py-5 flex items-center justify-center gap-3 transition-all duration-300 group hover:shadow-purple-600/20 cursor-pointer"
+                                className="w-full bg-gradient-to-t border border-neutral-600 from-[#626161] via-[#030303] to-[#1a1919] shadow-lg shadow-rose-100 hover:bg-neutral-800 text-white rounded-2xl px-8 py-5 flex items-center justify-center gap-3 transition-all duration-300 group hover:shadow-rose-600/20 cursor-pointer"
                             >
                                 <span className="text-lg font-bold font-jakarta">Send an inquiry</span>
                                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
