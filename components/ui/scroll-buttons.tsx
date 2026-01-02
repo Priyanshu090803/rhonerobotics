@@ -22,7 +22,7 @@ export function ScrollButtons({
             <button
                 onClick={onPrev}
                 disabled={prevDisabled}
-                className="p-4 rounded-full border border-neutral-200 text-neutral-400 hover:border-rose-300 hover:text-rose-300 transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed group"
+                className=" p-3 md:p-4 rounded-full   border-2 border-neutral-400 text-neutral-400 hover:border-rose-300 hover:text-rose-300 transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed group"
                 aria-label="Previous item"
             >
                 <ArrowLeft02Icon className="w-6 h-6 transition-transform group-active:scale-90" />
@@ -30,7 +30,7 @@ export function ScrollButtons({
             <button
                 onClick={onNext}
                 disabled={nextDisabled}
-                className="p-4 rounded-full border border-neutral-200 text-neutral-400 hover:border-rose-300 hover:text-rose-300 transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed group"
+                className=" p-3 md:p-4 rounded-full   border-2 border-neutral-400 text-neutral-400 hover:border-rose-300 hover:text-rose-300 transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed group"
                 aria-label="Next item"
             >
                 <ArrowRight02Icon className="w-6 h-6 transition-transform group-active:scale-90" />

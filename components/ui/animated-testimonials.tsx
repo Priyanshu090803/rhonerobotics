@@ -24,7 +24,7 @@ export const AnimatedTestimonials = ({
 
   useEffect(() => {
     setRotations(testimonials.map(() => Math.floor(Math.random() * 21) - 10));
-    
+
   }, [testimonials]);
 
   const handleNext = () => {
@@ -47,10 +47,10 @@ export const AnimatedTestimonials = ({
   }, [autoplay]);
 
   return (
-    <div className="  max-w-sm px-4 py-20 font-sans antialiased md:max-w-7xl md:px-8 lg:px-12  ">
-      <div className="relative grid grid-cols-1 gap-20 md:grid-cols-2">
+    <div className="max-w-full mx-auto px-4 md:px-8 lg:px-12 py-10 md:py-20 font-sans antialiased">
+      <div className="relative grid grid-cols-1 gap-4 md:gap-20 md:grid-cols-2">
         <div>
-          <div className="relative h-80 w-full">
+          <div className="relative h-64 md:h-80 w-full">
             <AnimatePresence>
               {testimonials.map((testimonial, index) => (
                 <motion.div
@@ -89,7 +89,7 @@ export const AnimatedTestimonials = ({
                     width={500}
                     height={500}
                     draggable={false}
-                    className="h-full w-full rounded-3xl object-cover object-center"
+                    className="md:h-full h-56 md:w-full w-56 mx-auto rounded-3xl object-cover object-center"
                   />
                 </motion.div>
               ))}
@@ -116,13 +116,13 @@ export const AnimatedTestimonials = ({
               ease: "easeInOut",
             }}
           >
-            <h3 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-t from-[#0e0e0e] via-[#181818] via-70% to-[#3b3b3b] dark:text-white">
+            <h3 className="md:text-4xl text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-t from-[#0e0e0e] via-[#181818] via-70% to-[#3b3b3b] dark:text-white">
               {testimonials[active].name}
             </h3>
-            <span className="text-sm font-jakarta text-neutral-500 dark:text-neutral-500">
+            <span className="md:text-sm text-xs font-jakarta text-neutral-500 dark:text-neutral-500">
               {testimonials[active].designation}
             </span>
-            <motion.p className="mt-8 text-lg font-jakarta leading-6 text-neutral-400 dark:text-neutral-300">
+            <motion.p className="mt-4 md:mt-8 md:text-lg text-base  font-jakarta leading-5.5 text-neutral-400 dark:text-neutral-300">
               {testimonials[active].quote.split(" ").map((word, index) => (
                 <motion.span
                   key={index}

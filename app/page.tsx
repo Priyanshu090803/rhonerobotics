@@ -7,14 +7,14 @@ import CaseStudies from '@/components/CaseStudies'
 import Contact from '@/components/Contact'
 const Home = () => {
   return (
-    <div className='min-h-screen w-full  overflow-x-hidden '>
+    <div className='min-h-screen w-full '>
       <Hero />
       <InfiniteMarquee />
       <Services />
       <OurProcesses />
       <Team />
       <CaseStudies />
-      <Contact/>
+      <Contact />
     </div>
   )
 }

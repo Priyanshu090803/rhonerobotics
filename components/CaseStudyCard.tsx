@@ -25,9 +25,9 @@ export function CaseStudyCard({ study, index }: CaseStudyCardProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="w-96 snap-start shrink-0 group relative"
+            className="w-[85vw] md:w-96 snap-start shrink-0 group relative"
         >
-            <div className="bg-neutral-900 rounded-[2rem] overflow-hidden border border-neutral-800 flex flex-col h-[500px] transition-all duration-500 hover:border-neutral-700">
+            <div className="bg-neutral-900 rounded-[2rem] overflow-hidden border border-neutral-800 flex flex-col h-[400px] md:h-[500px] transition-all duration-500 hover:border-neutral-700">
                 <AnimatePresence mode="wait">
                     {!showDescription ? (
                         <motion.div
@@ -50,23 +50,23 @@ export function CaseStudyCard({ study, index }: CaseStudyCardProps) {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 20 }}
-                            className="flex-1 p-8 flex flex-col justify-end space-y-6"
+                            className="flex-1 p-4 md:p-8 flex flex-col justify-end space-y-4 md:space-y-6 overflow-y-auto min-h-0"
                         >
-                            <div className="space-y-4">
+                            <div className="space-y-2 ">
                                 <div className="flex items-center gap-2">
                                     <div className="w-2 h-2 rounded-full bg-rose-600" />
                                     <h4 className="text-lg font-bold text-white font-jakarta">
                                         {study.tagline}
                                     </h4>
                                 </div>
-                                <p className="text-neutral-400 text-base leading-relaxed font-jakarta">
+                                <p className="text-neutral-100 text-sm text-base leading-relaxed font-jakarta">
                                     {study.description}
                                 </p>
                             </div>
 
-                            <div className="flex flex-wrap gap-2 pt-4">
+                            <div className="flex flex-wrap gap-2 pt-2">
                                 {study.tags.map(tag => (
-                                    <span key={tag} className="text-[11px] uppercase tracking-widest font-bold text-neutral-500 bg-neutral-800/50 border border-neutral-700/50 px-3 py-1.5 rounded-full">
+                                    <span key={tag} className="text-[8px] md:text-[11px] uppercase tracking-widest font-bold text-neutral-500 bg-neutral-800/50 border border-neutral-700/50 px-3 py-1.5 rounded-full">
                                         {tag}
                                     </span>
                                 ))}
@@ -75,7 +75,7 @@ export function CaseStudyCard({ study, index }: CaseStudyCardProps) {
                     )}
                 </AnimatePresence>
 
-                <div className="p-6 bg-neutral-900/90 backdrop-blur-sm border-t border-neutral-800 flex justify-between items-center">
+                <div className="py-3 px-4 bg-neutral-900/90 backdrop-blur-sm border-t border-neutral-800 flex justify-between items-center">
                     <div>
                         <h3 className="text-xl font-bold text-white mb-0.5 font-jakarta">
                             {study.title}

@@ -15,7 +15,7 @@ export const StickyScroll = ({
   contentClassName?: string;
 }) => {
   const [activeCard, setActiveCard] = React.useState(0);
-  const ref = useRef<any>(null);
+const ref = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -61,9 +61,9 @@ export const StickyScroll = ({
       ref={ref}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 flex flex-col lg:flex-row items-start gap-10 relative">
-        <div className=" md:sticky top-24 md:top-32 h-fit lg:w-1/3 mb-10 lg:mb-0 space-y-6">
+        <div className=" lg:sticky top-24 md:top-32 h-fit lg:w-1/3 mb-10 lg:mb-0 space-y-6">
           <div className="flex items-center gap-2">
-            <span className="text-neutral-600 font-mono text-sm tracking-widest">// Process</span>
+            <span className="text-neutral-600 font-mono text-sm tracking-widest">{"// Process"}</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-bold leading-tight">
             <span className="text-transparent z-10 bg-clip-text bg-gradient-to-t from-[#090909] via-[#333333] via-70% to-[#121111]">Our Process</span>

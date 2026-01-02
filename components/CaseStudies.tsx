@@ -98,10 +98,10 @@ export default function CaseStudies() {
     const scrollNext = () => scroll('right');
     const scrollPrev = () => scroll('left');
 
-    return (
-        <section className="py-24 px-6 md:px-12 lg:px-20 bg-[#0a0a0a] rounded-2xl" id="case-studies">
+    return (    
+        <section className="py-12 md:py-24 px-4 md:px-12 lg:px-20 bg-[#0a0a0a] overflow-x-hidden rounded-2xl" id="case-studies">
             <div className="max-w-7xl mx-auto">
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20 gap-8">
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20 gap-6">
                     <div className="max-w-3xl">
                         <h2 className="text-4xl md:text-6xl lg:text-8xl font-bold tracking-tight mb-6 md:mb-8 font-jakarta text-white">
                             Case Studies
@@ -123,7 +123,7 @@ export default function CaseStudies() {
                 <div className="relative group/container">
                     <div
                         ref={scrollRef}
-                        className="flex overflow-x-auto pb-12 gap-8 no-scrollbar snap-x snap-mandatory cursor-grab active:cursor-grabbing"
+                        className="flex overflow-x-auto pb-12 gap-6 no-scrollbar snap-x snap-mandatory cursor-grab active:cursor-grabbing"
                     >
                         {caseStudies.map((study, index) => (
                             <CaseStudyCard key={index} study={study} index={index} />
